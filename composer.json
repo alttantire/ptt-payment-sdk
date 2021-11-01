@@ -3,7 +3,7 @@
     "description": "PTT Akıllı Esnaf PHP Payment SDK",
     "type": "library",
     "require": {
-        "guzzlehttp": "7.3",
+        "guzzlehttp/guzzle": "^7.3",
         "ext-json": "*"
     },
     "authors": [
