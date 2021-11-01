@@ -1,0 +1,16 @@
+{
+    "name": "alttantire/ptt-payment-sdk",
+    "description": "PTT Akıllı Esnaf PHP Payment SDK",
+    "type": "library",
+    "require": {
+        "guzzlehttp": "7.3",
+        "ext-json": "*"
+    },
+    "authors": [
+        {
+            "name": "Erdem KAYA",
+            "email": "erdem@alttantire.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
