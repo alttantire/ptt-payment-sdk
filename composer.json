@@ -11,5 +11,6 @@
             "name": "Erdem KAYA",
             "email": "erdem@alttantire.com"
         }
-    ]
+    ],
+    "minimum-stability": "dev"
 }
