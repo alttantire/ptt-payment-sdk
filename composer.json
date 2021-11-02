@@ -12,5 +12,5 @@
             "email": "erdem@alttantire.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
