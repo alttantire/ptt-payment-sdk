@@ -12,5 +12,10 @@
             "email": "erdem@alttantire.com"
         }
     ],
+    "autoload" : {
+        "psr-4": {
+            "AkilliEsnaf\\": "src"
+        }
+    }
     "minimum-stability": "stable"
 }
