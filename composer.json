@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "ext-json": "*",
-        "guzzlehttp/guzzle": "~5.0"
+        "guzzlehttp/guzzle": "*"
     },
     "authors": [
         {
