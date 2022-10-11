@@ -4,9 +4,10 @@
  *   Posta ve Telgraf Teşkilatı A.Ş. Genel Müdürlüğü adına Alttantire Yazılım Çözümleri tarafından geliştirilmiştir.
  *   Tüm hakları Posta ve Telgraf Teşkilatı A.Ş. Genel Müdürlüğü'ne aittir.
  *
- * @author      Erdem KAYA <erdem@alttantire.com>
+ * @author      Alttantire Yazılım Çözümleri <info@alttantire.com>
  * @site        <https//akilliesnaf.ptt.gov.tr/>
- * @date        2021
+ * @date        2022
+ * @version     2.0
  *
  */
 
@@ -370,9 +371,9 @@ const DEFAULT_CURRENCY = 949;
 
     public function getError()
     {
-        if (!$this->validateHash($this->postdata)) {
-            return 'Hash doğrulama başarısız';
-        }
+        /* if (!$this->validateHash($this->postdata)) {
+             return 'Hash doğrulama başarısız';
+         }*/
 
         return isset($this->postdata['BankResponseMessage']) ? $this->postdata['BankResponseMessage'] : null;
     }
