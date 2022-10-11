@@ -32,11 +32,15 @@ const DEFAULT_CURRENCY = 949;
     protected $url = "https://payment.testdgpf.dgpaysit.com/api/Payment/";
     protected $postdata = []; //default
 
-    public function __construct($clientId, $apiUser, $apiPass)
+    public function __construct($environment, $clientId, $apiUser, $apiPass)
     {
         $this->clientId = $clientId;
         $this->apiUser = $apiUser;
         $this->apiPass = $apiPass;
+
+        if ($environment == "LIVE") {
+            $this->url = "https://aeo.ptt.gov.tr/api/Payment/";
+        }
 
         $this->init();
     }
@@ -218,10 +222,11 @@ const DEFAULT_CURRENCY = 949;
      *
      * @return mixed
      */
-    public function history($date, $page = 1, $pageSize = 10)
+    public function history($date, $orderId = "", $page = 1, $pageSize = 10)
     {
         return $this->post("history", $this->params([
-            'reconciliationDate' => $date,
+            'TransactionDate' => $date,
+            'OrderId' => $orderId,
             'Page' => $page,
             'pageSize' => $pageSize,
         ]));
