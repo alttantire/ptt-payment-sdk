@@ -5,9 +5,8 @@
 $ composer require alttantire/ptt-payment-sdk
 ```
 
-```
-PHP Class ile entegre olmak için 'PTT Akıllı Esnaf PHP Payment Class' reposunu kullanabilirsiniz.
-```
+PHP Class ile entegre olmak için [PTT Akıllı Esnaf PHP Payment Class](https://github.com/alttantire/ptt-payment-php-class) reposunu kullanabilirsiniz.
+
 
 ## Kullanım
 API çağrıları için aşağıdaki metodları kullanabilirsiniz.
