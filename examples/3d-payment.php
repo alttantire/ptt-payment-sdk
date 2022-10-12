@@ -21,7 +21,7 @@ $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
 $callback_url = "//".$_SERVER['HTTP_HOST'] . substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], "/"))."/payment-response.php"; // Ödeme işlem sonucunun döneceği adres - https://www.siteadresiniz.com/3D-sonuc.php
 
 //### Sipariş Bilgileri
-$orderId = "20221011999"; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından üretilir
+$orderId = ""; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından üretilir
 $amount = 1090; // 10 TL 90 kuruş
 $instalment = 0; // Taksit sayısı - Tek çekim için 0
 

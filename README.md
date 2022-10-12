@@ -27,7 +27,7 @@ $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
 $callback_url = "https://www.siteadresiniz.com/payment-response.php";
 
 //### Sipariş Bilgileri
-$orderId = "20221011999"; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
+$orderId = ""; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
 $amount = 1090; // 10 TL 90 kuruş
 $instalment = 0; // Taksit sayısı - Tek çekim için 0
 
@@ -56,7 +56,7 @@ $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
 $callback_url = "https://www.siteadresiniz.com/payment-response.php";
 
 //### Sipariş Bilgileri
-$orderId = "20221011999"; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
+$orderId = ""; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
 $amount = 1090; // 10 TL 90 kuruş
 $instalment = 0; // Taksit sayısı - Tek çekim için 0
 
