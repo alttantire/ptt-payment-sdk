@@ -24,7 +24,7 @@ $apiUser = "Entegrasyon_01"; // Api kullanıcı adınız
 $clientId = "1000000032"; // Api müşteri numaranız
 $apiPass = "gkk4l2*TY112"; // Api şifreniz
 $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
-$callback_url = "https://www.siteadresiniz.com/payment-response.php"
+$callback_url = "https://www.siteadresiniz.com/payment-response.php";
 
 //### Sipariş Bilgileri
 $orderId = "20221011999"; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
@@ -53,7 +53,7 @@ $apiUser = "Entegrasyon_01"; // Api kullanıcı adınız
 $clientId = "1000000032"; // Api müşteri numaranız
 $apiPass = "gkk4l2*TY112"; // Api şifreniz
 $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
-$callback_url = "https://www.siteadresiniz.com/payment-response.php"
+$callback_url = "https://www.siteadresiniz.com/payment-response.php";
 
 //### Sipariş Bilgileri
 $orderId = "20221011999"; // Sipariş numarası her sipariş için tekil olmalıdır. Boş bırakıldığında sistem tarafından otomatik üretilir
@@ -85,7 +85,7 @@ $apiUser = "Entegrasyon_01"; // Api kullanıcı adınız
 $clientId = "1000000032"; // Api müşteri numaranız
 $apiPass = "gkk4l2*TY112"; // Api şifreniz
 $environment = "TEST"; // "LIVE" - Gerçek ortam | "TEST" - Test ortam
-$callback_url = "https://www.siteadresiniz.com/payment-response.php"
+$callback_url = "https://www.siteadresiniz.com/payment-response.php";
 
 //### Sipariş Bilgileri
 $orderId = "20221011999"; // Sipariş numarası
