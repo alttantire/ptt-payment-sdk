@@ -27,7 +27,12 @@ $instalment = 0; // Taksit sayısı - Tek çekim için 0
 
 //### API Gateway
 $gateway = new Gateway($environment, $clientId, $apiUser, $apiPass);
-$payment = $gateway->startPaymentThreeDSession($callback_url, $amount, $instalment, $orderId);
+try {
+    $payment = $gateway->startPaymentThreeDSession($callback_url, $amount, $instalment, $orderId);
+} catch (Exception $e) {
+    print_r($e);
+}
+
 $iframeUrl = $gateway->getFrameUrl($payment->ThreeDSessionId);
 
 ?>

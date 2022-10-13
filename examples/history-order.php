@@ -38,7 +38,11 @@ $orderId = "20221011999";
 */
 $date = 20221011;
 
-$paymentCheck = $gateway->history($date, $orderId, $page = 1, $pageSize = 10);
+try {
+    $paymentCheck = $gateway->history($date, $orderId, $page = 1, $pageSize = 10);
+} catch (Exception $e) {
+    print_r($e);
+}
 
 echo "<pre>";
 print_r($paymentCheck);
