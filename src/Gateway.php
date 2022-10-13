@@ -22,7 +22,7 @@ use GuzzleHttp\Middleware;
 class Gateway
 {
 
-const DEFAULT_CURRENCY = 949;
+    const DEFAULT_CURRENCY = 949;
     protected $clientId;
     protected $apiUser;
     protected $apiPass;
@@ -65,17 +65,49 @@ const DEFAULT_CURRENCY = 949;
     }
 
     /**
+     * Non 3D işlem başlatma servisi
+     *
+     * @param $amount //tutarı 100 ile çarparak gönderin, 1TL için 100 gönderilmeli
+     * @param int $installment //Taksit
+     * @param string $cardHolderName // Kart hamilinin adı soyadı
+     * @param string $cardNo // Kredi Kart numarası
+     * @param string $expireDate // Son kullanım tarihi AA/YY formatında gönderilmeli
+     * @param string $cvv // Güvenlik kodu
+     * @param string $orderId // Sipariş Numarası. Boş bırakıldığında sistem tarafından üretilir.
+     * @param string $description // Opsiyonel sipariş açıklaması Max 256 karakter
+     * @param int $currency
+     *
+     * @return mixed
+     * @throws Exception
+     */
+    public function payment($amount, int $installment = 0, string $cardHolderName, string $cardNo, string $expireDate, string $cvv, string $orderId = "", string $description = "", int $currency = 949)
+    {
+        return $this->post("Payment", $this->params([
+            'orderId' => $orderId,
+            'amount' => $amount,
+            'currency' => $currency,
+            'installmentCount' => $installment,
+            'cardHolderName' => $cardHolderName,
+            'cardNo' => $cardNo,
+            'expireDate' => $expireDate,
+            'cvv' => $cvv,
+            'description' => $description,
+        ]));
+    }
+
+    /**
      * 3D işlem başlatma servisi
      *
-     * @param        $callbackUrl //3D işlemi için geri dönüş URL si
-     * @param        $amount //tutarı 100 ile çarparak gönderin, 1TL için 100 gönderilmeli
+     * @param $callbackUrl //3D işlemi için geri dönüş URL si
+     * @param $amount //tutarı 100 ile çarparak gönderin, 1TL için 100 gönderilmeli
      * @param int $installment //Taksit
      * @param string $orderId
      * @param int $currency
      *
      * @return mixed
+     * @throws Exception
      */
-    public function threeDPayment($callbackUrl, $amount, $installment = 0, $orderId = "", $currency = 949)
+    public function threeDPayment($callbackUrl, $amount, int $installment = 0, string $orderId = "", int $currency = 949)
     {
         return $this->post("threeDPayment", $this->params([
             'callbackUrl' => $callbackUrl,
@@ -83,6 +115,50 @@ const DEFAULT_CURRENCY = 949;
             'amount' => $amount,
             'currency' => $currency,
             'installmentCount' => $installment,
+        ]));
+    }
+
+    /**
+     * 3D Ön Otorizasyon işlem başlatma servisi
+     *
+     * @param string $callbackUrl //3D işlemi için geri dönüş URL si
+     * @param integer $amount //tutarı 100 ile çarparak gönderin, 1TL için 100 gönderilmeli
+     * @param int $installment //Taksit
+     * @param string $orderId
+     * @param string $description
+     * @param int $currency
+     *
+     * @return mixed
+     * @throws Exception
+     */
+    public function threeDPreAuth(string $callbackUrl, int $amount, int $installment = 0, string $orderId = "", string $description="", int $currency = 949)
+    {
+        return $this->post("threeDPreAuth", $this->params([
+            'callbackUrl' => $callbackUrl,
+            'orderId' => $orderId,
+            'description' => $description,
+            'amount' => $amount,
+            'currency' => $currency,
+            'installmentCount' => $installment,
+        ]));
+    }
+
+    /**
+     * 3D Otorizasyon işlem tamamlama servisi.
+     * Ön Otorizasyonu alınan tutar müşterinin kartından tahsil edilir.
+     * Bu servis çağrılmadan satış işlemi tamamlanmış olmaz.
+     *
+     * @param string $orderId
+     * @param integer $amount // Satışa dönüştürülecek tutar. 100 ile çarparak gönderin, 1TL için 100 gönderilmeli
+     *
+     * @return mixed
+     * @throws Exception
+     */
+    public function threeDPostAuth( string $orderId, int $amount )
+    {
+        return $this->post("threeDPreAuth", $this->params([
+            'orderId' => $orderId,
+            'amount' => $amount,
         ]));
     }
 
@@ -209,8 +285,8 @@ const DEFAULT_CURRENCY = 949;
     public function refund($amount, $orderId = "")
     {
         return $this->post("refund", $this->params([
-            'orderId' => $orderId,
-            'amount' => $amount,
+            'OrderId' => $orderId,
+            'Amount' => $amount,
         ]));
     }
 
@@ -222,6 +298,7 @@ const DEFAULT_CURRENCY = 949;
      * @param int $pageSize
      *
      * @return mixed
+     * @throws Exception
      */
     public function history($date, $orderId = "", $page = 1, $pageSize = 10)
     {
@@ -230,24 +307,6 @@ const DEFAULT_CURRENCY = 949;
             'OrderId' => $orderId,
             'Page' => $page,
             'pageSize' => $pageSize,
-        ]));
-    }
-
-    public function threeDPreAuth($callbackUrl, $amount, $orderId = "", $currency = 949)
-    {
-        return $this->post("threeDPreAuth", $this->params([
-            'callbackUrl' => $callbackUrl,
-            'orderId' => $orderId,
-            'amount' => $amount,
-            'currency' => $currency,
-        ]));
-    }
-
-    public function postAuth($amount, $orderId = "")
-    {
-        return $this->post("postAuth", $this->params([
-            'orderId' => $orderId,
-            'amount' => $amount,
         ]));
     }
 
@@ -260,6 +319,7 @@ const DEFAULT_CURRENCY = 949;
      * @param string $orderId
      * @param int $currency
      * @return mixed
+     * @throws Exception
      */
     public function startPaymentThreeDSession($callbackUrl, $amount, $installment = 0, $orderId = "", $currency = 949)
     {
@@ -288,6 +348,7 @@ const DEFAULT_CURRENCY = 949;
      *
      * @param $threeDSessionId
      * @return mixed
+     * @throws Exception
      */
     public function threeDSessionResult($threeDSessionId)
     {
@@ -311,7 +372,7 @@ const DEFAULT_CURRENCY = 949;
         });
     }
 
-    public function setPost($data)
+    public function setPost($data): Gateway
     {
         $this->postdata = $data;
         return $this;
